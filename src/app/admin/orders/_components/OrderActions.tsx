@@ -1,6 +1,6 @@
 "use client"
 
-import { DropdownMenuItem } from "@/components/ui/dropdown-menu"
+import { DropdownMenuItem } from "../../../../components/ui/dropdown-menu"
 import { useTransition } from "react"
 import { deleteOrder } from "../../_actions/orders"
 import { useRouter } from "next/navigation"

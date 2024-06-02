@@ -1,6 +1,6 @@
 "use server"
 
-import db from "@/db/db"
+import db from "../../../db/db"
 import { z } from "zod"
 import fs from "fs/promises"
 import { notFound, redirect } from "next/navigation"
@@ -98,7 +98,6 @@ export async function updateProduct(
       name: data.name,
       description: data.description,
       priceInCents: data.priceInCents,
-      filePath,
       imagePath,
     },
   })
@@ -124,7 +123,6 @@ export async function deleteProduct(id: string) {
 
   if (product == null) return notFound()
 
-  await fs.unlink(product.filePath)
   await fs.unlink(`public${product.imagePath}`)
 
   revalidatePath("/")

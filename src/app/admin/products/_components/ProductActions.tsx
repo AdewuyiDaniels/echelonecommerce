@@ -1,6 +1,6 @@
 "use client"
 
-import { DropdownMenuItem } from "@/components/ui/dropdown-menu"
+import { DropdownMenuItem } from "../../../../components/ui/dropdown-menu"
 import { useTransition } from "react"
 import {
   deleteProduct,
