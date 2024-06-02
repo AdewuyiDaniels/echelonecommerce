@@ -1,7 +1,7 @@
 "use client"
 
-import { userOrderExists } from "@/app/actions/orders"
-import { Button } from "@/components/ui/button"
+import { userOrderExists } from "../../../../../../app/actions/orders"
+import { Button } from "../../../../../../components/ui/button"
 import {
   Card,
   CardContent,
@@ -9,16 +9,16 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { formatCurrency } from "@/lib/formatters"
+} from "../../../../../../components/ui/card"
+import { formatCurrency } from "../../../../../../lib/formatters"
 import {
   Elements,
   LinkAuthenticationElement,
   PaymentElement,
   useElements,
   useStripe,
-} from "@stripe/react-stripe-js"
-import { loadStripe } from "@stripe/stripe-js"
+} from "@stripe/react-stripe-js";
+import { loadStripe } from '@stripe/stripe-js';
 import Image from "next/image"
 import { FormEvent, useState } from "react"
 
@@ -102,10 +102,9 @@ function Form({
         confirmParams: {
           return_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/stripe/purchase-success`,
         },
-      })
-      .then(({ error }) => {
-        if (error.type === "card_error" || error.type === "validation_error") {
-          setErrorMessage(error.message)
+      }).then(({error}): void => {
+          if (error.type === "card_error" || error.type === "validation_error") {
+            setErrorMessage(error.message)
         } else {
           setErrorMessage("An unknown error occurred")
         }

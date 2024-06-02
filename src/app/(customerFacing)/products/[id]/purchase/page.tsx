@@ -1,4 +1,4 @@
-import db from "@/db/db"
+import db from "../../../../../db/db"
 import { notFound } from "next/navigation"
 import Stripe from "stripe"
 import { CheckoutForm } from "./_components/CheckoutForm"

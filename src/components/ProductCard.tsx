@@ -1,4 +1,4 @@
-import { formatCurrency } from "@/lib/formatters"
+import { formatCurrency } from "../lib/formatters"
 import {
   Card,
   CardContent,
