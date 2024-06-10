@@ -11,18 +11,20 @@ import {
 import { OrderInformation } from "./components/OrderInformation"
 import React from "react"
 
+type Order = {
+  id: string
+  pricePaidInCents: number
+  createdAt: Date
+  product: {
+    name: string
+    imagePath: string
+    description: string
+  }
+  downloadVerificationId: string
+}
+
 type OrderHistoryEmailProps = {
-  orders: {
-    id: string
-    pricePaidInCents: number
-    createdAt: Date
-    downloadVerificationId: string
-    product: {
-      name: string
-      imagePath: string
-      description: string
-    }
-  }[]
+  orders: Order[]
 }
 
 OrderHistoryEmail.PreviewProps = {
@@ -31,7 +33,7 @@ OrderHistoryEmail.PreviewProps = {
       id: crypto.randomUUID(),
       createdAt: new Date(),
       pricePaidInCents: 10000,
-      downloadVerificationId: crypto.randomUUID(),
+      downloadVerificationId: crypto.randomUUID(), // Add this line
       product: {
         name: "Product name",
         description: "Some description",
@@ -43,7 +45,7 @@ OrderHistoryEmail.PreviewProps = {
       id: crypto.randomUUID(),
       createdAt: new Date(),
       pricePaidInCents: 2000,
-      downloadVerificationId: crypto.randomUUID(),
+      downloadVerificationId: crypto.randomUUID(), // Add this line
       product: {
         name: "Product name 2",
         description: "Some other desc",
@@ -65,11 +67,6 @@ export default function OrderHistoryEmail({ orders }: OrderHistoryEmailProps) {
             <Heading>Order History</Heading>
             {orders.map((order, index) => (
               <React.Fragment key={order.id}>
-                <OrderInformation
-                  order={order}
-                  product={order.product}
-                  downloadVerificationId={order.downloadVerificationId}
-                />
                 {index < orders.length - 1 && <Hr />}
               </React.Fragment>
             ))}

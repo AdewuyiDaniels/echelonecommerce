@@ -1,3 +1,5 @@
+// src/app/customerFacing/page.tsx
+
 import { ProductCard, ProductCardSkeleton } from "../../components/ProductCard"
 import { Button } from "../../components/ui/button"
 import db from "../../db/db"
@@ -6,6 +8,7 @@ import { Product } from "@prisma/client"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { Suspense } from "react"
+import Banner from "../../components/Banner"
 
 const getMostPopularProducts = cache(
   () => {
@@ -27,10 +30,19 @@ const getNewestProducts = cache(() => {
   })
 }, ["/", "getNewestProducts"])
 
-
 export default function HomePage() {
   return (
     <main className="space-y-12">
+      <Banner imageUrl="/path/to/banner-image.jpg" alt="Welcome to Our Store" />
+      <section className="text-center py-8">
+        <h1 className="text-4xl font-bold mb-4">Welcome to Our Store</h1>
+        <p className="mb-4">Discover the best products at unbeatable prices.</p>
+        <Button variant="primary" asChild>
+          <Link href="/products">
+            <span>Shop Now</span>
+          </Link>
+        </Button>
+      </section>
       <ProductGridSection
         title="Most Popular"
         productsFetcher={getMostPopularProducts}
@@ -82,7 +94,12 @@ async function ProductSuspense({
 }: {
   productsFetcher: () => Promise<Product[]>
 }) {
-  return (await productsFetcher()).map(product => (
-    <ProductCard key={product.id} {...product} />
-  ))
+  const products = await productsFetcher()
+  return (
+    <>
+      {products.map((product) => (
+        <ProductCard key={product.id} {...product} />
+      ))}
+    </>
+  )
 }

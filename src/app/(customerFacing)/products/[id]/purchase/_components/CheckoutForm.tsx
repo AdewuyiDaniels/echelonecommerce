@@ -18,7 +18,8 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
-import { loadStripe } from '@stripe/stripe-js';
+
+
 import Image from "next/image"
 import { FormEvent, useState } from "react"
 
@@ -146,3 +147,7 @@ function Form({
     </form>
   )
 }
+function loadStripe(arg0: string) {
+  throw new Error("Function not implemented.")
+}
+

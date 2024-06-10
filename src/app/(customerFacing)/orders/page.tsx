@@ -1,7 +1,7 @@
 "use client"
 
-import { emailOrderHistory } from "@/actions/orders"
-import { Button } from "@/components/ui/button"
+import { emailOrderHistory } from "../../actions/orders";
+import { Button } from "../../../components/ui/button"
 import {
   Card,
   CardContent,
@@ -9,21 +9,25 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from "../../../components/ui/card"
+import { Input } from "../../../components/ui/input"
+import { Label } from "../../../components/ui/label"
 import { useFormState, useFormStatus } from "react-dom"
 
+type FormData = {
+  error?: string
+  message?: string
+}
+
 export default function MyOrdersPage() {
-  const [data, action] = useFormState(emailOrderHistory, {})
+  const [data, action] = useFormState<FormData>(emailOrderHistory, {})
   return (
     <form action={action} className="max-2-xl mx-auto">
       <Card>
         <CardHeader>
           <CardTitle>My Orders</CardTitle>
           <CardDescription>
-            Enter your email and we will email you your order history and
-            download links
+            Enter your email and we will email you your order history and download links
           </CardDescription>
         </CardHeader>
         <CardContent>

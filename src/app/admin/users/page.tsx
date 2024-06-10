@@ -5,15 +5,15 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import db from "@/db/db"
-import { formatCurrency, formatNumber } from "@/lib/formatters"
+} from "../../../components/ui/table"
+import db from "../../../db/db"
+import { formatCurrency, formatNumber } from "../../../lib/formatters"
 import { PageHeader } from "../_components/PageHeader"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "../../../components/ui/dropdown-menu"
 import { MoreVertical } from "lucide-react"
 import { DeleteDropDownItem } from "./_components/UserActions"
 

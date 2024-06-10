@@ -1,3 +1,5 @@
+// src/app/customerFacing/layout.tsx
+
 import { Nav, NavLink } from "../../components/Nav"
 
 export const dynamic = "force-dynamic"
